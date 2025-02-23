@@ -14,11 +14,18 @@ def calculateRent():
                                                                         return
 
                     totalElectricBill = electric_unit_charge * unit_consumed
-                    if roommates != 0:
-                              total_cost = (room_rent + food_spent + totalElectricBill)
-                              per_person_cost = total_cost//roommates
+                    total_cost = (room_rent + food_spent + totalElectricBill)
+
+                    if roommates >= 0:
+                              if roommates == 0:
+                                  per_person_cost = total_cost
+                              else:
+                                  per_person_cost = total_cost//roommates
+
+                              
+                             
                     else:
-                              per_person_cost = (room_rent + food_spent + totalElectricBill)
+                              per_person_cost = total_cost
 
                     result_text.set(f"Total Bill: R{total_cost:.2f}\nEach Pays: R{per_person_cost:.2f}" if roommates > 0 else f"Total Bill: R{total_cost:.2f}")
 
